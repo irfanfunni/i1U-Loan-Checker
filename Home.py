@@ -10,7 +10,7 @@ st.set_page_config(
 )
 left_co, cent_co,last_co = st.columns(3)
 with cent_co:
-    st.image("./images/education_logo.png")
+    st.image("./images/logo_dark.png")
 
 st.title("Loan Eligibility Calculator")
 st.markdown("Disclaimer: The data provided will not be recorded")
