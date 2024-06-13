@@ -27,6 +27,7 @@ with cent_co:
     
 st.title("Loan Eligibility Checker")
 st.markdown("Disclaimer: The data provided will not be recorded. If a report is requested, the generated report will not be saved either.")
+st.markdown("Note: This web-app may lag at times when entering input. Please kindly refresh. Thank you.")
 
 border()
 
