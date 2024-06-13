@@ -3,29 +3,12 @@ import streamlit as st
 import time
 import random
 
-#Configure and Style Page
+#Configure Page
 st.set_page_config(
     page_title="Homepage",
     page_icon="🌈",
 )
 
-# page_bg_img = f"""
-# <style>
-# [data-testid="stAppViewContainer"] > .main {{
-#     background: #030303;
-#     background: linear-gradient(135deg, #030303, #302F2F);
-# }}
-# [data-testid="stSidebar"] > div:first-child {{
-#     background: #030303;
-#     background: linear-gradient(135deg, #030303, #302F2F);
-#     }}
-# [data-testid="stHeader"] {{
-#     background: #030303;
-
-# }}
-# </style>
-# """
-# st.markdown(page_bg_img, unsafe_allow_html=True)
 
 #Create Functions
 #Border Function to Create Borders
@@ -39,7 +22,7 @@ def border():
 #First Row
 left_co, cent_co,last_co = st.columns([1,3,1])
 with cent_co:
-    st.image("./images/main_logo.png")
+    st.image("./images/test_logo.png")
     
 st.title("Loan Eligibility Calculator")
 st.markdown("Note: This app is best viewed using a dark theme.")
