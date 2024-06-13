@@ -58,7 +58,7 @@ def get_user_details():
         NoEmp = st.number_input("Enter number of employees",min_value = 0, step = 1)
         
         #Loan Amount
-        GrAppv = st.number_input("Enter loan amount",min_value = 0)
+        GrAppv = st.number_input("Enter loan amount",min_value = 0.0)
         
         #Loan Term in Months
         Term = st.number_input("Enter loan term in months",min_value = 0, step = 1)
