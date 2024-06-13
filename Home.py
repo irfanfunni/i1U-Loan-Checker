@@ -22,7 +22,7 @@ color: white
     background: linear-gradient(135deg, #030303, #302F2F);
     color: white}}
 [data-testid="stHeader"] {{
-background: "#000000";
+background: black;
 color: white
 }}
 
