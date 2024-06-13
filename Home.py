@@ -2,6 +2,7 @@ import streamlit as st
 import time
 import random
 
+
 #To input function for data analysis here. 
 
 #Configure and Style Page
@@ -28,6 +29,7 @@ def border():
         st.write("")
         st.divider()
         st.write("")
+
 
 #First Row
 left_co, cent_co,last_co = st.columns([1,3,1])
@@ -61,6 +63,7 @@ if "user_data" not in st.session_state:
 if 'data_filled' not in st.session_state:
     st.session_state['data_filled'] = False
 
+@st.experimental_fragment
 def get_user_details():
     with st.container():
         st.subheader("Please enter your details")
@@ -104,24 +107,29 @@ def get_user_details():
             with st.spinner("Checking"):
                 time.sleep(5)
             st.success(":white_check_mark: Output Generated Successfully!")
-            print(st.session_state["user_data"])
+            st.experimental_rerun()
             #Execute ML and Analysis Component
 
     return st.session_state["user_data"]
 
 get_user_details()
-print(st.session_state["user_data"])
+#Execute ML and Analysis Component
+# st.write("Debug: Data filled status:", st.session_state['data_filled'])
+# st.write("Debug: Current user data:", st.session_state['user_data'])
 
-#Output
-output = f"""
+if st.session_state['data_filled'] and st.session_state['user_data']:
+    st.write("Ok can run ML liao")
+    output = f"""
 You are __________ for a bank loan with a ____% chance of success. 
 
 Companies of Similar Profile like yours have borrowed a loan of about $______________ in the past. 
 """
 
+#Output
+
+
 border()
-st.write("Debug: Data filled status:", st.session_state['data_filled'])
-st.write("Debug: Current user data:", st.session_state['user_data'])
+
 #Third Row - Output
 @st.experimental_fragment
 def generate_output():
@@ -142,8 +150,9 @@ def generate_output():
         id = str(random.randint(0,100001))
         file_name = f"i1UniversityEligibilityCHecker_{id}.txt"
         # st.download_button("Download Report", text_contents, file_name=file_name)
-        if st.download_button("Download Report", text_contents, file_name = file_name ,disabled = not None):   
+        if st.download_button("Download Report", text_contents, file_name = file_name ,disabled = not st.session_state['data_filled']):   
             st.success("Output Generated Successfully! :smile:")
-            print()
+            
    
 generate_output()
+
