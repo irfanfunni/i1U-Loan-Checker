@@ -12,7 +12,7 @@ st.set_page_config(
 
 st.header("Bar Chart of The Frequency vs the States")
 # Read the CSV file
-df = pd.read_csv("./datasets/SBAnational_cleaned.csv")
+df = pd.read_parquet("./datasets/SBAnational_cleaned.parquet")
 
 state_counts = df["State"].value_counts()
 
