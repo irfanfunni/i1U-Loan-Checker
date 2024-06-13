@@ -7,28 +7,28 @@ st.set_page_config(
     page_icon="🌈",
 )
 
-page_bg_img = f"""
-<style>
-[data-testid="stAppViewContainer"] > .main {{
-    background: #030303;
-    background: linear-gradient(135deg, #030303, #302F2F);
-    }}
-[data-testid="stSidebar"] > div:first-child {{
-    background: #030303;
-    background: linear-gradient(135deg, #030303, #302F2F);
-    }}
-[data-testid="stHeader"] {{
-    background: "#FFFFFF";
+# page_bg_img = f"""
+# <style>
+# [data-testid="stAppViewContainer"] > .main {{
+#     background: #030303;
+#     background: linear-gradient(135deg, #030303, #302F2F);
+#     }}
+# [data-testid="stSidebar"] > div:first-child {{
+#     background: #030303;
+#     background: linear-gradient(135deg, #030303, #302F2F);
+#     }}
+# [data-testid="stHeader"] {{
+#     background: "#FFFFFF";
 
-}}
-[data-testid="stHeader"] {{
-background: #030303;
+# }}
+# [data-testid="stHeader"] {{
+# background: #030303;
 
-}}
+# }}
 
-</style>
-"""
-st.markdown(page_bg_img, unsafe_allow_html=True)
+# </style>
+# """
+# st.markdown(page_bg_img, unsafe_allow_html=True)
 
 
 #***************************************************************************************#
