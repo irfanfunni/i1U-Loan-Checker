@@ -11,14 +11,19 @@ st.set_page_config(
 
 page_bg_img = f"""
 <style>
-[data-testid="stAppViewContainer"] > .main,[data-testid="stSidebar"] > div:first-child  {{
-background: rgb(255,255,255);
-background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(250,250,250,1) 36%, rgba(248,248,248,1) 42%, rgba(239,239,239,1) 48%, rgba(230,230,230,1) 51%, rgba(212,212,212,1) 56%, rgba(206,206,206,1) 61%, rgba(196,196,196,1) 65%, rgba(184,184,184,1) 71%, rgba(175,175,175,1) 75%, rgba(172,172,172,1) 80%, rgba(163,163,163,1) 84%, rgba(142,142,142,1) 90%, rgba(125,125,125,1) 95%, rgba(107,107,107,1) 100%);
-}}
+[data-testid="stAppViewContainer"] > .main {{
 
+background: #030303;
+background: linear-gradient(135deg, #030303, #302F2F);
+color: white !important
+}}
+[data-testid="stSidebar"] > div:first-child {{
+    background: #030303;
+    background: linear-gradient(135deg, #030303, #302F2F);
+    color: white}}
 [data-testid="stHeader"] {{
 background: black !important;
-color: white !important
+color: white
 }}
 
 </style>
