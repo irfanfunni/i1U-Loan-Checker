@@ -100,6 +100,7 @@ def get_user_details():
     return st.session_state["user_data"]
 
 get_user_details()
+st.write(st.session_state["user_data"])
 #Execute ML and Analysis Component
 prob = st.session_state['predictions']
 
