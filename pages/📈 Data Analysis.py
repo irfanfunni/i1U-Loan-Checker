@@ -19,3 +19,5 @@ st.bar_chart(state_counts)
 st.write()
 st.divider()
 st.write()
+
+st.image("./images/data.png")
