@@ -20,4 +20,6 @@ st.write()
 st.divider()
 st.write()
 
+st.header("Bar Chart of The MIS Status vs States")
+st.write("MIS refers to the Loan Status")
 st.image("./images/data.png")
