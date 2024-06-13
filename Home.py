@@ -43,6 +43,9 @@ if "user_data" not in st.session_state:
 if 'data_filled' not in st.session_state:
     st.session_state['data_filled'] = False
 
+if 'predictions' not in st.session_state:
+    st.session_state['predictions'] = 0
+
 @st.experimental_fragment
 def get_user_details():
     with st.container():
@@ -91,14 +94,15 @@ def get_user_details():
             with st.spinner("Checking"):
                 time.sleep(5)
             st.success(":white_check_mark: Output Generated Successfully!")
+            st.session_state['predictions'] = final_model.predict_inputs(st.session_state["user_data"])[0]
             st.experimental_rerun()
            
     return st.session_state["user_data"]
 
 get_user_details()
 #Execute ML and Analysis Component
-predictions = final_model.predict_inputs(st.session_state["user_data"])[0]
-st.write(predictions)
+prob = st.session_state['predictions'][0]
+st.write(prob)
 #Initialise output message
 output = ""
 if st.session_state['data_filled'] and st.session_state['user_data']:
@@ -106,10 +110,10 @@ if st.session_state['data_filled'] and st.session_state['user_data']:
     now = datetime.now()
     report_date_time = now.strftime("%d-%b-%Y %H:%M:%S")
     is_eligible = "Not Eligible"
-    if predictions > 0.5: 
+    if prob > 0.5: 
         is_eligible = "Eligible"
     output = f"""
-You are {is_eligible} for a bank loan with a {round(predictions*100,2)}% chance of success. 
+You are {is_eligible} for a bank loan with a {round(prob*100,2)}% chance of success. 
 
 Date: {report_date_time.split(" ")[0]}  
 Time: {report_date_time.split(" ")[1]}
