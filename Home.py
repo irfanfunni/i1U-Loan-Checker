@@ -95,7 +95,7 @@ get_user_details()
 output = ""
 if st.session_state['data_filled'] and st.session_state['user_data']:
     st.write("Ok can run ML liao")
-    report_date_time = f"{datetime.now():%d-%b-%Y %H:%M}"
+    report_date_time = f"{datetime.now():%d-%b-%Y %I:%M:%S %p}"
     output = f"""
 You are __________ for a bank loan with a ____% chance of success. 
 
