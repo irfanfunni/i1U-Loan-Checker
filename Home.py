@@ -56,7 +56,10 @@ def get_user_details():
 
         #Number of Employees
         NoEmp = st.number_input("Enter number of employees",min_value = 0, step = 1)
-
+        
+        #Loan Amount
+        GrAppv = st.number_input("Enter loan amount",min_value = 0)
+        
         #Loan Term in Months
         Term = st.number_input("Enter loan term in months",min_value = 0, step = 1)
 
@@ -80,6 +83,7 @@ def get_user_details():
                 "NAICS": NAICS,
                 "State": State,
                 "NoEmp": NoEmp,
+                "GrAppv": GrAppv,
                 "Term" : Term,
                 "NewExist": NewExist
             }
@@ -93,16 +97,18 @@ def get_user_details():
 
 get_user_details()
 #Execute ML and Analysis Component
+predictions = {}
 
+#Initialise output message
 output = ""
 if st.session_state['data_filled'] and st.session_state['user_data']:
     st.write("Ok can run ML liao")
     now = datetime.now()
     report_date_time = now.strftime("%d-%b-%Y %H:%M:%S")
     output = f"""
-You are __________ for a bank loan with a ____% chance of success. 
+You are {predictions} for a bank loan with a {predictions}% chance of success. 
 
-Companies of similar profile like yours have borrowed a loan of about $______________ in the past. 
+Companies of similar profile like yours have borrowed a loan of about ${predictions} in the past. 
 
 Date: {report_date_time.split(" ")[0]}  
 Time: {report_date_time.split(" ")[1]}
