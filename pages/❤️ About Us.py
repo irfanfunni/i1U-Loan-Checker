@@ -10,21 +10,20 @@ st.set_page_config(
 page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
-
-background: #030303;
-background: linear-gradient(135deg, #030303, #302F2F);
-textColor="#000000"}}
+    background: #030303;
+    background: linear-gradient(135deg, #030303, #302F2F);
+    }}
 [data-testid="stSidebar"] > div:first-child {{
     background: #030303;
     background: linear-gradient(135deg, #030303, #302F2F);
-  textColor="#000000"}}
+    }}
 [data-testid="stHeader"] {{
-background: "#FFFFFF";
-color: white
+    background: "#FFFFFF";
+
 }}
 [data-testid="stHeader"] {{
 background: #030303;
-color: white
+
 }}
 
 </style>

@@ -1,21 +1,8 @@
 [theme]
-base = "light"  # Set the base theme to light or dark
-primaryColor = "#1f77b4"
-backgroundColor = "#ffffff"
-secondaryBackgroundColor = "#f0f2f6"
-textColor = "#000000"
-font = "sans serif"
-
-[theme.dark]
-primaryColor = "#1f77b4"
-backgroundColor = "#000000"
-secondaryBackgroundColor = "#333333"
-textColor = "#ffffff"
+base = "dark"  # Set the base theme to light or dark
+textColor = "#FFFFFF"
 font = "sans serif"
 
 [theme.light]
-primaryColor = "#1f77b4"
-backgroundColor = "#000000"
-secondaryBackgroundColor = "#333333"
 textColor = "#000000"
 font = "sans serif"

@@ -12,19 +12,17 @@ st.set_page_config(
 page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
-background: #030303;
-background: linear-gradient(135deg, #030303, #302F2F);
-color: white !important
+    background: #030303;
+    background: linear-gradient(135deg, #030303, #302F2F);
 }}
 [data-testid="stSidebar"] > div:first-child {{
     background: #030303;
     background: linear-gradient(135deg, #030303, #302F2F);
-    color: white}}
+    }}
 [data-testid="stHeader"] {{
-background: #030303 !important;
-color: white
-}}
+    background: #030303 !important;
 
+}}
 </style>
 """
 st.markdown(page_bg_img, unsafe_allow_html=True)
