@@ -4,6 +4,7 @@ import time
 import random
 from datetime import datetime
 import joblib
+import final_model
 
 #Configure Page
 st.set_page_config(
@@ -96,18 +97,19 @@ def get_user_details():
 
 get_user_details()
 #Execute ML and Analysis Component
-predictions = {}
-
+predictions = final_model.predict_inputs(st.session_state["user_data"])[0]
+st.write(predictions)
 #Initialise output message
 output = ""
 if st.session_state['data_filled'] and st.session_state['user_data']:
     st.write("Ok can run ML liao")
     now = datetime.now()
     report_date_time = now.strftime("%d-%b-%Y %H:%M:%S")
+    is_eligible = "Not Eligible"
+    if predictions > 0.5: 
+        is_eligible = "Eligible"
     output = f"""
-You are {predictions} for a bank loan with a {predictions}% chance of success. 
-
-Companies of similar profile like yours have borrowed a loan of about ${predictions} in the past. 
+You are {is_eligible} for a bank loan with a {round(predictions*100,2)}% chance of success. 
 
 Date: {report_date_time.split(" ")[0]}  
 Time: {report_date_time.split(" ")[1]}
