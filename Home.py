@@ -41,17 +41,17 @@ if 'data_filled' not in st.session_state:
 @st.experimental_fragment
 def get_user_details():
     with st.container():
-        st.subheader("Please enter your details")
+        st.subheader("Please enter your organisation details")
 
         #North American Industry Classification System (NAICS) Code
-        NAICS = st.text_input("Enter NAICS Code", placeholder="e.g. 451120")
+        NAICS = st.text_input("Enter NAICS code", placeholder="e.g. 451120")
         
         #change to statecode 
         #ZipCode
-        State = st.selectbox("Select StateCode",('IN', 'OK', 'FL', 'CT', 'NJ', 'NC', 'IL', 'RI', 'TX', 'VA', 'TN', 'AR', 'MN', 'MO','MA', 'CA', 'SC', 'LA', 'IA', 'OH', 'KY', 'MS', 'NY', 'MD', 'PA', 'OR', 'ME', 'KS','MI', 'AK', 'WA', 'CO', 'MT', 'WY', 'UT', 'NH', 'WV', 'ID', 'AZ', 'NV', 'WI', 'NM','GA', 'ND', 'VT', 'AL', 'NE', 'SD', 'HI', 'DE', 'DC'))       
+        State = st.selectbox("Select state code",('IN', 'OK', 'FL', 'CT', 'NJ', 'NC', 'IL', 'RI', 'TX', 'VA', 'TN', 'AR', 'MN', 'MO','MA', 'CA', 'SC', 'LA', 'IA', 'OH', 'KY', 'MS', 'NY', 'MD', 'PA', 'OR', 'ME', 'KS','MI', 'AK', 'WA', 'CO', 'MT', 'WY', 'UT', 'NH', 'WV', 'ID', 'AZ', 'NV', 'WI', 'NM','GA', 'ND', 'VT', 'AL', 'NE', 'SD', 'HI', 'DE', 'DC'))       
 
         #Number of Employees
-        NoEmp = st.number_input("Enter Number of Employees",min_value = 0, step = 1)
+        NoEmp = st.number_input("Enter number of employees",min_value = 0, step = 1)
 
         #Loan Term in Months
         Term = st.number_input("Enter loan term in months",min_value = 0, step = 1)
@@ -101,7 +101,7 @@ You are __________ for a bank loan with a ____% chance of success.
 
 Companies of Similar Profile like yours have borrowed a loan of about $______________ in the past. 
 
-Date: {report_date_time.split(" ")[0]}
+Date: {report_date_time.split(" ")[0]}  
 Time: {report_date_time.split(" ")[1]}
 """
 

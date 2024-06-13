@@ -9,7 +9,7 @@ st.set_page_config(
     page_icon="💵",
 )
 
-st.header("Bar Chart of The Frequency vs the States")
+st.header("Bar Chart of The Frequency Loan Requests vs the States")
 # Read the CSV file
 df = pd.read_parquet("./datasets/SBAnational_cleaned.parquet")
 
