@@ -2,7 +2,7 @@
 import streamlit as st
 import time
 import random
-import report_generator
+from datetime import datetime
 
 #Configure Page
 st.set_page_config(
@@ -45,9 +45,10 @@ def get_user_details():
 
         #North American Industry Classification System (NAICS) Code
         NAICS = st.text_input("Enter NAICS Code", placeholder="e.g. 451120")
-
+        
+        #change to statecode 
         #ZipCode
-        Zip = st.text_input("Enter ZipCode",placeholder="e.g. 47711")       
+        State = st.selectbox("Select StateCode",('IN', 'OK', 'FL', 'CT', 'NJ', 'NC', 'IL', 'RI', 'TX', 'VA', 'TN', 'AR', 'MN', 'MO','MA', 'CA', 'SC', 'LA', 'IA', 'OH', 'KY', 'MS', 'NY', 'MD', 'PA', 'OR', 'ME', 'KS','MI', 'AK', 'WA', 'CO', 'MT', 'WY', 'UT', 'NH', 'WV', 'ID', 'AZ', 'NV', 'WI', 'NM','GA', 'ND', 'VT', 'AL', 'NE', 'SD', 'HI', 'DE', 'DC'))       
 
         #Number of Employees
         NoEmp = st.number_input("Enter Number of Employees",min_value = 0, step = 1)
@@ -67,13 +68,13 @@ def get_user_details():
         is_pdpa_agreed = st.checkbox(":red[*]I have read and agree with the data privacy policy as referenced by the Personal Data Protection Act (PDPA)") 
         
         #Have all fields been field? 
-        can_submit = NAICS and Zip and NoEmp and Term and NewExist and is_pdpa_agreed
+        can_submit = NAICS and State and NoEmp and Term and NewExist and is_pdpa_agreed
 
         if st.button("Check Eligibility", type = "primary", disabled = not can_submit): 
             # Update the session state dictionary with user inputs
             st.session_state["user_data"] = {
                 "NAICS": NAICS,
-                "Zip": Zip,
+                "State": State,
                 "NoEmp": NoEmp,
                 "Term" : Term,
                 "NewExist": NewExist
@@ -91,11 +92,17 @@ get_user_details()
 #Execute ML and Analysis Component
 # st.write("Debug: Data filled status:", st.session_state['data_filled'])
 # st.write("Debug: Current user data:", st.session_state['user_data'])
-text_contents = ""
 if st.session_state['data_filled'] and st.session_state['user_data']:
     st.write("Ok can run ML liao")
-    output = "boba"
-    text_contents = report_generator.generate_report(st.session_state['user_data'],output)
+    report_date_time = f"{datetime.now():%d-%b-%Y %H:%M}"
+    output = f"""
+You are __________ for a bank loan with a ____% chance of success. 
+
+Companies of Similar Profile like yours have borrowed a loan of about $______________ in the past. 
+
+Date: {report_date_time.split(" ")[0]}
+Time: {report_date_time.split(" ")[1]}
+"""
 
 border()
 #***************************************************************************************#
@@ -113,7 +120,7 @@ def generate_output():
                 st.write("")
         id = str(random.randint(0,100001))
         file_name = f"i1LoanEligibilityChecker_{id}.txt"
-        if st.download_button("Download Report", text_contents, file_name = file_name ,disabled = not st.session_state['data_filled']):   
+        if st.download_button("Download Report", output, file_name = file_name ,disabled = not st.session_state['data_filled']):   
             st.success("Report Generated Successfully! :smile:")
             
    
