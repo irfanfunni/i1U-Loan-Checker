@@ -157,8 +157,8 @@ def generate_output():
                 st.write(output)  
             else: 
                 st.write("")
-  
-        text_contents = generate_report(st.session_state["user_data"],output)
+        user_details = st.session_state["user_data"]
+        text_contents = generate_report(user_details,output)
         id = str(random.randint(0,100001))
         file_name = f"i1LoanEligibilityChecker_{id}.txt"
         if st.download_button("Download Report", text_contents, file_name = file_name ,disabled = not st.session_state['data_filled']):   
