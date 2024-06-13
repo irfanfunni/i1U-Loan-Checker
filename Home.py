@@ -3,12 +3,16 @@ import streamlit as st
 import time
 import random
 from datetime import datetime
+import joblib
 
 #Configure Page
 st.set_page_config(
     page_title="Homepage",
     page_icon="💵",
 )
+
+#Load the model 
+model = joblib.load('best_model_pipeline.pkl')
 
 #Create Functions
 #Border Function to Create Borders
