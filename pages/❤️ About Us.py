@@ -17,7 +17,7 @@ st.title("About Us")
 st.subheader("Sustainability | Accessibility | Inclusivity")
 st.write("")
 st.write(f"""
-Welcome to our loan eligibility checker app! We are a team of passionate BBCS Hackathon participants who have come together to create a user-friendly solution to help individuals determine their eligibility for a loan from a bank.
+Welcome to our loan eligibility checker app! :orange[We are a team of passionate BBCS Hackathon participants, from group i1], who have come together to create a user-friendly solution to help individuals determine their eligibility for a loan from a bank.
 
 At our core, we believe in leveraging the power of machine learning and advanced analytics to simplify complex financial processes. Through meticulous analysis and utilizing cutting-edge libraries such as scikit-learn and PyTorch, we've developed a robust model that accurately predicts loan eligibility based on various factors.
 
