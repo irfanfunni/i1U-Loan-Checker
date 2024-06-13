@@ -6,7 +6,7 @@ import random
 #Configure Page
 st.set_page_config(
     page_title="Homepage",
-    page_icon="💰",
+    page_icon="💲",
 )
 
 #Create Functions
