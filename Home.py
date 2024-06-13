@@ -88,14 +88,12 @@ def get_user_details():
                 time.sleep(5)
             st.success(":white_check_mark: Output Generated Successfully!")
             st.experimental_rerun()
-            #Execute ML and Analysis Component
-
+           
     return st.session_state["user_data"]
 
 get_user_details()
 #Execute ML and Analysis Component
-# st.write("Debug: Data filled status:", st.session_state['data_filled'])
-# st.write("Debug: Current user data:", st.session_state['user_data'])
+
 output = ""
 if st.session_state['data_filled'] and st.session_state['user_data']:
     st.write("Ok can run ML liao")
@@ -104,7 +102,7 @@ if st.session_state['data_filled'] and st.session_state['user_data']:
     output = f"""
 You are __________ for a bank loan with a ____% chance of success. 
 
-Companies of Similar Profile like yours have borrowed a loan of about $______________ in the past. 
+Companies of similar profile like yours have borrowed a loan of about $______________ in the past. 
 
 Date: {report_date_time.split(" ")[0]}  
 Time: {report_date_time.split(" ")[1]}
@@ -118,7 +116,6 @@ def generate_output():
     with st.container():
         st.subheader("Generated Output")
         #Generate Report in txt file
-        #Pass Generated Output to report_generator()
         with st.container(border = True):
             if st.session_state['data_filled']:
                 st.write(output)  
@@ -128,7 +125,6 @@ def generate_output():
         file_name = f"i1LoanEligibilityChecker_{id}.txt"
         if st.download_button("Download Report", output, file_name = file_name ,disabled = not st.session_state['data_filled']):   
             st.success("Report Generated Successfully! :smile:")
-            
    
 generate_output()
 
