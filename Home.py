@@ -66,15 +66,15 @@ def get_user_details():
         company_age = st.radio("Is your company more than 2 years old?",("No","Yes"))
 
         if company_age == "No":
-            NewExist = 2 #New Business
+            NewBusiness = 2 #New Business
         elif company_age == "Yes":
-            NewExist = 1 #Existing Business
+            NewBusiness = 1 #Existing Business
 
         #PDPA Agreement
         is_pdpa_agreed = st.checkbox(":red[*]I have read and agree with the data privacy policy as referenced by the Personal Data Protection Act (PDPA)") 
         
         #Have all fields been field? 
-        can_submit = Industry and State and NoEmp and Term and NewExist and is_pdpa_agreed
+        can_submit = Industry and State and NoEmp and Term and NewBusiness and is_pdpa_agreed
 
         if st.button("Check Eligibility", type = "primary", disabled = not can_submit): 
             # Update the session state dictionary with user inputs
@@ -84,21 +84,19 @@ def get_user_details():
                 "NoEmp": NoEmp,
                 "GrAppv": GrAppv,
                 "Term" : Term,
-                "NewExist": NewExist
+                "NewBusiness": NewBusiness
             }
             st.session_state['data_filled'] = True
             with st.spinner("Checking"):
                 time.sleep(5)
             st.success(":white_check_mark: Output Generated Successfully!")
-            st.markdown(st.session_state["user_data"])
             st.session_state['predictions'] = final_model.predict_inputs(st.session_state["user_data"])
             st.experimental_rerun()
            
     return st.session_state["user_data"]
 
 get_user_details()
-st.markdown(st.session_state["user_data"])
-print(st.session_state["user_data"])
+
 #Execute ML and Analysis Component
 prob = st.session_state['predictions']
 
