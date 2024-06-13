@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 #Configure Page
 st.set_page_config(
     page_title="Data Analysis",
-    page_icon="💲",
+    page_icon="💸",
 )
 
 st.header("Bar Chart of The Frequency vs the States")
