@@ -20,7 +20,11 @@ color: white
 [data-testid="stSidebar"] > div:first-child {{
     background: #030303;
     background: linear-gradient(135deg, #030303, #302F2F);
-    color: white
+    color: white}}
+[data-testid="stHeader"] {{
+background: "#FFFFFF";
+color: white
+}}
 
 </style>
 """
