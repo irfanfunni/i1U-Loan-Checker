@@ -2,6 +2,7 @@
 import streamlit as st
 import time
 import random
+import report_generator
 
 #Configure Page
 st.set_page_config(
