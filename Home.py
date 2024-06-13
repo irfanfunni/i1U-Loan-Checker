@@ -58,7 +58,9 @@ border()
 if "user_data" not in st.session_state:
     st.session_state["user_data"] = {}
 
-@st.experimental_fragment
+if 'data_filled' not in st.session_state:
+    st.session_state['data_filled'] = False
+
 def get_user_details():
     with st.container():
         st.subheader("Please enter your details")
@@ -98,7 +100,7 @@ def get_user_details():
                 "Term" : Term,
                 "NewExist": NewExist
             }
-
+            st.session_state['data_filled'] = True
             with st.spinner("Checking"):
                 time.sleep(5)
             st.success(":white_check_mark: Output Generated Successfully!")
@@ -118,7 +120,8 @@ Companies of Similar Profile like yours have borrowed a loan of about $_________
 """
 
 border()
-
+st.write("Debug: Data filled status:", st.session_state['data_filled'])
+st.write("Debug: Current user data:", st.session_state['user_data'])
 #Third Row - Output
 @st.experimental_fragment
 def generate_output():
@@ -126,11 +129,15 @@ def generate_output():
         st.subheader("Generated Output")
         #Generate Report in txt file
         #Pass Generated Output to report_generator()
+        
         with st.container(border = True):
-            if st.session_state["user_data"]:
+            if st.session_state['data_filled']:
                 st.write(output)
+                
             else: 
                 st.write("")
+  
+                
         text_contents = "noseyy"
         id = str(random.randint(0,100001))
         file_name = f"i1UniversityEligibilityCHecker_{id}.txt"
@@ -138,5 +145,5 @@ def generate_output():
         if st.download_button("Download Report", text_contents, file_name = file_name ,disabled = not None):   
             st.success("Output Generated Successfully! :smile:")
             print()
-        
+   
 generate_output()
