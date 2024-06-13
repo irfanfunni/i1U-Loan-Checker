@@ -49,7 +49,7 @@ def get_user_details():
         st.subheader("Please enter your organisation details")
 
         #Industry
-        Industry = st.selectbox("Enter your Industry", ("",set(['Ag/For/Fish/Hunt','Min/Quar/Oil_Gas_ext','Utilities','Construction','Manufacturing','Manufacturing','Manufacturing','Wholesale_trade','Retail_trade','Retail_trade','Trans/Ware','Trans/Ware','Information','Finance/Insurance','RE/Rental/Lease','Prof/Science/Tech','Mgmt_comp','Admin_sup/Waste_Mgmt_Rem','Educational','Healthcare/Social_assist','Arts/Entertain/Rec','Accom/Food_serv','Other_no_pub','Public_Admin'])))
+        Industry = st.selectbox("Enter your Industry", ("",'Ag/For/Fish/Hunt','Min/Quar/Oil_Gas_ext','Utilities','Construction','Manufacturing','Wholesale_trade','Retail_trade','Trans/Ware','Information','Finance/Insurance','RE/Rental/Lease','Prof/Science/Tech','Mgmt_comp','Admin_sup/Waste_Mgmt_Rem','Educational','Healthcare/Social_assist','Arts/Entertain/Rec','Accom/Food_serv','Other_no_pub','Public_Admin'))
         
         #ZipCode
         State = st.selectbox("Select state code",("",'IN', 'OK', 'FL', 'CT', 'NJ', 'NC', 'IL', 'RI', 'TX', 'VA', 'TN', 'AR', 'MN', 'MO','MA', 'CA', 'SC', 'LA', 'IA', 'OH', 'KY', 'MS', 'NY', 'MD', 'PA', 'OR', 'ME', 'KS','MI', 'AK', 'WA', 'CO', 'MT', 'WY', 'UT', 'NH', 'WV', 'ID', 'AZ', 'NV', 'WI', 'NM','GA', 'ND', 'VT', 'AL', 'NE', 'SD', 'HI', 'DE', 'DC'))       
