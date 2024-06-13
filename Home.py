@@ -3,7 +3,6 @@ import streamlit as st
 import time
 import random
 from datetime import datetime
-import joblib
 import final_model
 
 #Configure Page
@@ -11,9 +10,6 @@ st.set_page_config(
     page_title="Homepage",
     page_icon="💵",
 )
-
-#Load the model 
-model = joblib.load('best_model_pipeline_random.pkl')
 
 #Create Functions
 #Border Function to Create Borders
@@ -94,7 +90,7 @@ def get_user_details():
             with st.spinner("Checking"):
                 time.sleep(5)
             st.success(":white_check_mark: Output Generated Successfully!")
-            st.session_state['predictions'] = final_model.predict_inputs(st.session_state["user_data"])
+            # st.session_state['predictions'] = final_model.predict_inputs(st.session_state["user_data"])
             st.experimental_rerun()
            
     return st.session_state["user_data"]
