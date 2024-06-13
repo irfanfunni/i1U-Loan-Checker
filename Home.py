@@ -74,7 +74,7 @@ def get_user_details():
         is_pdpa_agreed = st.checkbox(":red[*]I have read and agree with the data privacy policy as referenced by the Personal Data Protection Act (PDPA)") 
         
         #Have all fields been field? 
-        can_submit = NAICS and State and NoEmp and Term and NewExist and is_pdpa_agreed
+        can_submit = Industry and State and NoEmp and Term and NewExist and is_pdpa_agreed
 
         if st.button("Check Eligibility", type = "primary", disabled = not can_submit): 
             # Update the session state dictionary with user inputs
