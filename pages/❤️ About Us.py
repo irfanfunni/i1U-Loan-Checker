@@ -22,6 +22,10 @@ textColor="#000000"}}
 background: "#FFFFFF";
 color: white
 }}
+[data-testid="stHeader"] {{
+background: black;
+color: white
+}}
 
 </style>
 """
