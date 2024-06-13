@@ -42,6 +42,7 @@ with cent_co:
     st.image("./images/main_logo.png")
     
 st.title("Loan Eligibility Calculator")
+st.markdown("Note: This app is best viewed using a dark theme.")
 st.markdown("Disclaimer: The data provided will not be recorded. If a report is requested, the generated report will not be saved either.")
 
 # Connect LLM to Streamlit 
