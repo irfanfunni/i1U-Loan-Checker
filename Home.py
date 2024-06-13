@@ -92,6 +92,7 @@ get_user_details()
 #Execute ML and Analysis Component
 # st.write("Debug: Data filled status:", st.session_state['data_filled'])
 # st.write("Debug: Current user data:", st.session_state['user_data'])
+output = ""
 if st.session_state['data_filled'] and st.session_state['user_data']:
     st.write("Ok can run ML liao")
     report_date_time = f"{datetime.now():%d-%b-%Y %H:%M}"
