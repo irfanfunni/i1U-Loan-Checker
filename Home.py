@@ -134,7 +134,6 @@ get_user_details()
 #Execute ML and Analysis Component
 # st.write("Debug: Data filled status:", st.session_state['data_filled'])
 # st.write("Debug: Current user data:", st.session_state['user_data'])
-output = ""
 if st.session_state['data_filled'] and st.session_state['user_data']:
     st.write("Ok can run ML liao")
     output = f"""
@@ -157,8 +156,7 @@ def generate_output():
                 st.write(output)  
             else: 
                 st.write("")
-        user_details = st.session_state["user_data"]
-        text_contents = generate_report(user_details,output)
+        text_contents = generate_report(st.session_state["user_data"],output)
         id = str(random.randint(0,100001))
         file_name = f"i1LoanEligibilityChecker_{id}.txt"
         if st.download_button("Download Report", text_contents, file_name = file_name ,disabled = not st.session_state['data_filled']):   
