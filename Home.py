@@ -13,7 +13,6 @@ st.set_page_config(
 
 #Load the model 
 model = joblib.load('best_model_pipeline.pkl')
-st.write(model)
 
 #Create Functions
 #Border Function to Create Borders
