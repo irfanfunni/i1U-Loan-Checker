@@ -20,7 +20,7 @@ page_bg_img = f"""
     background: linear-gradient(135deg, #030303, #302F2F);
     }}
 [data-testid="stHeader"] {{
-    background: #030303 !important;
+    background: #030303;
 
 }}
 </style>
