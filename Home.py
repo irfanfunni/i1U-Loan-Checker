@@ -102,11 +102,10 @@ def get_user_details():
 get_user_details()
 #Execute ML and Analysis Component
 prob = st.session_state['predictions']
-st.write(prob)
+
 #Initialise output message
 output = ""
 if st.session_state['data_filled'] and st.session_state['user_data']:
-    st.write("Ok can run ML liao")
     now = datetime.now()
     report_date_time = now.strftime("%d-%b-%Y %H:%M:%S")
     is_eligible = "Not Eligible"
