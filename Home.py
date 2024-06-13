@@ -12,7 +12,6 @@ st.set_page_config(
 page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
-
 background: #030303;
 background: linear-gradient(135deg, #030303, #302F2F);
 color: white !important
@@ -22,7 +21,7 @@ color: white !important
     background: linear-gradient(135deg, #030303, #302F2F);
     color: white}}
 [data-testid="stHeader"] {{
-background: black !important;
+background: #030303;
 color: white
 }}
 

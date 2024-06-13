@@ -23,7 +23,7 @@ background: "#FFFFFF";
 color: white
 }}
 [data-testid="stHeader"] {{
-background: black;
+background: #030303;
 color: white
 }}
 
