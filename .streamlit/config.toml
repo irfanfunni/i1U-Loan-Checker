@@ -1,8 +1,10 @@
 [theme]
-base = "dark"  # Set the base theme to light or dark
+base = "dark"
 textColor = "#ffffff"
 font = "sans serif"
 
 [theme.light]
 textColor = "#000000"
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#ffffff"
 font = "sans serif"
