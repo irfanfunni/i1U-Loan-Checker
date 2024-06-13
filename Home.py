@@ -4,118 +4,133 @@ import random
 
 #To input function for data analysis here. 
 
+#Configure and Style Page
 st.set_page_config(
     page_title="Homepage",
     page_icon="🌈",
 )
-left_co, cent_co,last_co = st.columns(3)
-with cent_co:
-    st.image("./images/logo_dark.png")
 
-st.title("Loan Eligibility Calculator")
-st.markdown("Disclaimer: The data provided will not be recorded")
+page_bg_img = f"""
+<style>
+[data-testid="stAppViewContainer"] > .main {{
+
+background: #030303;
+background: linear-gradient(135deg, #030303, #302F2F);
+}}
+</style>
+"""
+st.markdown(page_bg_img, unsafe_allow_html=True)
+
+#Create Functions
+# #Insert border between Rows
+def border():
+    with st.container():
+        st.write("")
+        st.divider()
+        st.write("")
 
 #First Row
+left_co, cent_co,last_co = st.columns([1,3,1])
+with cent_co:
+    st.image("./images/logo_dark.png")
+    
+st.title("Loan Eligibility Calculator")
+st.markdown("Disclaimer: The data provided will not be recorded. If a report is requested, the generated report will not be saved either.")
+
+
+#Variables needed: zipcodes/postalcode, amount_requested, loan_amount, business info location etc. 
+#Meant for individual businesses 
+#Confirmed variables : Zip, NAICS(),DisbursementGross,NewExist,SBA_Appv - abit like guarantor, current employee size , expected employee size after loan?
+#Outcome will be: Yes and No
+#Chances: default 
+#Another outcome: Previous businesses closest to your company have loaned of a certain amount. Based on yr requested loan details, similar businesses have received up to $xxxxxx amount. 
+
+#Transparency for the loan processes. 
+#Accessibility to quality data and insights. 
+
+# Connect LLM to Streamlit 
+
+
+border()
+
+#Second Row
+# Initialize the dictionary in session state if it doesn't exist
+if "user_data" not in st.session_state:
+    st.session_state["user_data"] = {}
+
 @st.experimental_fragment
 def get_user_details():
-    user_details = {}
     with st.container():
         st.subheader("Please enter your details")
-        #Gender
-        gender = st.selectbox("Gender",("","Male","Female","Others"),placeholder = "Select Gender")
-        user_details["gender"] = gender
-        
-        #Marriage Status
-        marriage_status = st.selectbox("Marriage Status",("","Married","Single","Widowed"), placeholder = "Select Marriage Status")
-        user_details["marriage_status"] = marriage_status
 
-        #Number of Dependents
-        
-        dependent_num = st.number_input("Dependent Number",placeholder= "Select Dependant Number",step = 1,min_value = 0)
-        st.write("*Dependants refer to the number of people who rely on you for money*") #To change this
-        user_details["dependent_num"] = dependent_num
-        
-        #Education
-        education_level = st.selectbox("Education Level",("","Olevel","Alevel","Diploma","Masters","phd"), placeholder = "Select Education Level")
-        user_details["education_level"] = education_level
-        
-        #Self-employed
-        is_self_employed = st.radio("Are you self-employed",("No","Yes"))
-        user_details["is_self_employed"] = is_self_employed
-        
-        #Applicant_Income
-        applicant_income = st.number_input("Enter Income",placeholder="Income",min_value = 0.0)
-        user_details["applicant_income"] = applicant_income
-        
-        #CoApplicant_income
-        coApplicant_income = 0
-        have_coApplicant = st.radio("Do you have a Co-Applicant",("No","Yes"))
-        if have_coApplicant == "Yes": 
-            coApplicant_income = st.number_input("Enter your co-applicant income",min_value = 0.0)
-            user_details["coApplicant_income"] = coApplicant_income
-        
-        #Loan Amount
-        loan_amount = st.number_input("Enter your loan Amount", min_value = 0.0)
-        user_details["loan_amount"] = loan_amount
-        
-        #Loan Amount Term
-        loan_term = st.number_input("Enter loan term in months",min_value = 0, step = 1)
-        user_details["loan_term"] = loan_term
-        
-        #Credit History
-        credit_history = st.radio("Enter your credit history",("No","Yes"))
-        if credit_history == "No":
-            user_details["credit_history"] = 0
-        elif credit_history == "Yes":
-            user_details["credit_history"] = 1
-        
-        #Property District
-        #CCR - Core Central Region
-        core_central_region_districtcode = ["09","10","11"]
-        core_central__region_postalcode = ["22","23","24","25","26","27","28","29","30"]
-        
-        #RCR - Remaining Central Region 
-        remaining_central_region_districtcode = ["01","02","03","04","06","07","12","13","14","21","26"]
-        remaining_central_region_postalcode = ["01","02","03","04","05","06","07","08","14","15","16","09","10","17","18","19","20","21","31","32","33","34","35","36","37","38","39","40","41","58","59","77","78"]
-        #OCR - Outside Central Region
-        outside_central_region_districtcode = ["05","22","23","24","25","27","19","20","28","15","16","17","18"]
-        outside_central_region_postalcode = ["11","12","13","60","61","62","63","64","65","66","67","68","69","70","71","72","73","75","76","53","54","55","82","56","57","79","80","42","43","44","45","46","47","48","49","50","81","51","52"]
- 
-        postal_code = st.text_input("Enter your postal code")[0:2]
-        
-        if postal_code in core_central__region_postalcode:
-            user_details["property_district"] = "CCR"
-        elif postal_code in remaining_central_region_postalcode:
-            user_details["property_district"] = "RCR"
-        elif postal_code in outside_central_region_postalcode:
-            user_details["property_district"] = "OCR"
+        #North American Industry Classification System (NAICS) Code
+        NAICS = st.text_input("Enter NAICS Code", placeholder="e.g. 451120")
+
+        #ZipCode
+        Zip = st.text_input("Enter ZipCode",placeholder="e.g. 47711")       
+
+        #Number of Employees
+        NoEmp = st.number_input("Enter Number of Employees",min_value = 0, step = 1)
+
+        #Loan Term in Months
+        Term = st.number_input("Enter loan term in months",min_value = 0, step = 1)
+
+        #Company Age
+        company_age = st.radio("Is your company more than 2 years old?",("No","Yes"))
+
+        if company_age == "No":
+            NewExist = 2 #New Business
+        elif company_age == "Yes":
+            NewExist = 1 #Existing Business
 
         #PDPA Agreement
         is_pdpa_agreed = st.checkbox(":red[*]I have read and agree with the data privacy policy as referenced by the Personal Data Protection Act (PDPA)") 
         
         #Have all fields been field? 
-        can_submit = gender and marriage_status and credit_history and applicant_income and loan_amount and have_coApplicant and loan_term and postal_code and is_pdpa_agreed
-   
-        #     st.warning("All fields must be filled!")
-        if st.button("Generate Report", type = "primary", disabled = not can_submit):   
-            st.success("Output Generated Successfully! :smile:")
-            st.rerun()
-        
-    return user_details
-user_details = get_user_details()
+        can_submit = NAICS and Zip and NoEmp and Term and NewExist and is_pdpa_agreed
 
-print(user_details)
+        if st.button("Check Eligibility", type = "primary", disabled = not can_submit): 
+            # Update the session state dictionary with user inputs
+            st.session_state["user_data"] = {
+                "NAICS": NAICS,
+                "Zip": Zip,
+                "NoEmp": NoEmp,
+                "Term" : Term,
+                "NewExist": NewExist
+            }
 
-#Set Divider
-st.divider()
+            with st.spinner("Checking"):
+                time.sleep(5)
+            st.success(":white_check_mark: Output Generated Successfully!")
+            print(st.session_state["user_data"])
+            #Execute ML and Analysis Component
 
-#Second Row - Output
+    return st.session_state["user_data"]
+
+get_user_details()
+print(st.session_state["user_data"])
+
+#Output
+output = f"""
+You are __________ for a bank loan with a ____% chance of success. 
+
+Companies of Similar Profile like yours have borrowed a loan of about $______________ in the past. 
+"""
+
+border()
+
+#Third Row - Output
 @st.experimental_fragment
-def generate_report():
-    with st.container(border = True):
-        st.write("Generated Output")
+def generate_output():
+    with st.container():
+        st.subheader("Generated Output")
         #Generate Report in txt file
         #Pass Generated Output to report_generator()
+        with st.container(border = True):
+            if st.session_state["user_data"]:
+                st.write(output)
+            else: 
+                st.write("")
         text_contents = "noseyy"
         id = str(random.randint(0,100001))
         file_name = f"i1UniversityEligibilityCHecker_{id}.txt"
@@ -124,4 +139,4 @@ def generate_report():
             st.success("Output Generated Successfully! :smile:")
             print()
         
-generate_report()
+generate_output()
