@@ -1,12 +1,33 @@
+#Import Modules
 import streamlit as st
 
+#Configure and Style Page
 st.set_page_config(
     page_title="About Us",
     page_icon="🌈",
 )
+
+page_bg_img = f"""
+<style>
+[data-testid="stAppViewContainer"] > .main {{
+
+background: #030303;
+background: linear-gradient(135deg, #030303, #302F2F);
+}}
+[data-testid="stSidebar"] > div:first-child {{
+    background: #030303;
+    background: linear-gradient(135deg, #030303, #302F2F);
+
+</style>
+"""
+st.markdown(page_bg_img, unsafe_allow_html=True)
+
+
+#***************************************************************************************#
+#First Row
 left_co, cent_co,last_co = st.columns([1,3,1])
 with cent_co:
-    st.image("./images/logo_dark.png")
+    st.image("./images/main_logo.png")
 st.title("About Us")
 st.subheader("Sustainability | Accessibility | Inclusivity")
 st.write("")

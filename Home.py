@@ -1,9 +1,7 @@
+#Import Modules
 import streamlit as st
 import time
 import random
-
-
-#To input function for data analysis here. 
 
 #Configure and Style Page
 st.set_page_config(
@@ -18,43 +16,37 @@ page_bg_img = f"""
 background: #030303;
 background: linear-gradient(135deg, #030303, #302F2F);
 }}
+[data-testid="stSidebar"] > div:first-child {{
+    background: #030303;
+    background: linear-gradient(135deg, #030303, #302F2F);
+
 </style>
 """
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
 #Create Functions
-# #Insert border between Rows
+#Border Function to Create Borders
 def border():
     with st.container():
         st.write("")
         st.divider()
         st.write("")
 
-
+#***************************************************************************************#
 #First Row
 left_co, cent_co,last_co = st.columns([1,3,1])
 with cent_co:
-    st.image("./images/logo_dark.png")
+    st.image("./images/main_logo.png")
     
 st.title("Loan Eligibility Calculator")
 st.markdown("Disclaimer: The data provided will not be recorded. If a report is requested, the generated report will not be saved either.")
-
-
-#Variables needed: zipcodes/postalcode, amount_requested, loan_amount, business info location etc. 
-#Meant for individual businesses 
-#Confirmed variables : Zip, NAICS(),DisbursementGross,NewExist,SBA_Appv - abit like guarantor, current employee size , expected employee size after loan?
-#Outcome will be: Yes and No
-#Chances: default 
-#Another outcome: Previous businesses closest to your company have loaned of a certain amount. Based on yr requested loan details, similar businesses have received up to $xxxxxx amount. 
-
-#Transparency for the loan processes. 
-#Accessibility to quality data and insights. 
 
 # Connect LLM to Streamlit 
 
 
 border()
 
+#***************************************************************************************#
 #Second Row
 # Initialize the dictionary in session state if it doesn't exist
 if "user_data" not in st.session_state:
@@ -125,11 +117,8 @@ You are __________ for a bank loan with a ____% chance of success.
 Companies of Similar Profile like yours have borrowed a loan of about $______________ in the past. 
 """
 
-#Output
-
-
 border()
-
+#***************************************************************************************#
 #Third Row - Output
 @st.experimental_fragment
 def generate_output():
@@ -137,19 +126,15 @@ def generate_output():
         st.subheader("Generated Output")
         #Generate Report in txt file
         #Pass Generated Output to report_generator()
-        
         with st.container(border = True):
             if st.session_state['data_filled']:
-                st.write(output)
-                
+                st.write(output)  
             else: 
                 st.write("")
   
-                
         text_contents = "noseyy"
         id = str(random.randint(0,100001))
         file_name = f"i1UniversityEligibilityCHecker_{id}.txt"
-        # st.download_button("Download Report", text_contents, file_name=file_name)
         if st.download_button("Download Report", text_contents, file_name = file_name ,disabled = not st.session_state['data_filled']):   
             st.success("Output Generated Successfully! :smile:")
             
