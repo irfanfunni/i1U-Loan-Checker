@@ -15,15 +15,15 @@ page_bg_img = f"""
 
 background: #030303;
 background: linear-gradient(135deg, #030303, #302F2F);
-color: white
+color: white !important
 }}
 [data-testid="stSidebar"] > div:first-child {{
     background: #030303;
     background: linear-gradient(135deg, #030303, #302F2F);
-    color: white}}
+    color: white !important}}
 [data-testid="stHeader"] {{
-background: black;
-color: white
+background: black !important;
+color: white !important
 }}
 
 </style>
