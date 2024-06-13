@@ -22,7 +22,7 @@ def border():
 #First Row
 left_co, cent_co,last_co = st.columns([1,3,1])
 with cent_co:
-    st.image("./images/test_logo.png")
+    st.image("./images/main_logo.png")
     
 st.title("Loan Eligibility Calculator")
 st.markdown("Note: This app is best viewed using a dark theme.")
