@@ -101,7 +101,7 @@ def get_user_details():
 
 get_user_details()
 #Execute ML and Analysis Component
-prob = st.session_state['predictions'][0]
+prob = st.session_state['predictions']
 st.write(prob)
 #Initialise output message
 output = ""

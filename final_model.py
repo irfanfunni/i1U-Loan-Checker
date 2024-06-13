@@ -7,4 +7,4 @@ def predict_inputs(user_inputs):
     # convert to df
     df = pd.DataFrame(user_inputs)
     # Run predictions
-    return model.predict_proba(df)[:, 1]
+    return float(model.predict_proba(df)[:, 1])
