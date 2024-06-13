@@ -6,9 +6,8 @@ import random
 #Configure Page
 st.set_page_config(
     page_title="Homepage",
-    page_icon="🌈",
+    page_icon="💰",
 )
-
 
 #Create Functions
 #Border Function to Create Borders
@@ -27,9 +26,6 @@ with cent_co:
 st.title("Loan Eligibility Calculator")
 st.markdown("Note: This app is best viewed using a dark theme.")
 st.markdown("Disclaimer: The data provided will not be recorded. If a report is requested, the generated report will not be saved either.")
-
-# Connect LLM to Streamlit 
-
 
 border()
 

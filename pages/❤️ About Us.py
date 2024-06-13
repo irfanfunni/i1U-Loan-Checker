@@ -4,7 +4,7 @@ import streamlit as st
 #Configure Page
 st.set_page_config(
     page_title="About Us",
-    page_icon="🌈",
+    page_icon="💰",
 )
 
 
