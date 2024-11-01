@@ -29,3 +29,5 @@ Transparency and accuracy are at the forefront of everything we do. :orange[Our 
 
 Thank you for choosing our loan eligibility checker app. We're excited to be part of your financial journey and look forward to helping you achieve your goals.
          """)
+
+st.write("""This streamlit application was made for the BBCS June Hackathon 2024. View source code: %s"""%"https://github.com/irfanfunni/i1U-Loan-Checker")
